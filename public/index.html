@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof of Inevitability</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .header p {
+      color: #888;
+      font-size: 0.95rem;
+    }
+    .tag {
+      display: inline-block;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 28px;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+    textarea {
+      width: 100%;
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #f0f0f0;
+      padding: 14px;
+      font-size: 0.95rem;
+      resize: vertical;
+      min-height: 100px;
+      font-family: inherit;
+      outline: none;
+    }
+    textarea:focus { border-color: #555; }
+    button {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f0f0f0;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #ddd; }
+    button:disabled { background: #333; color: #666; cursor: not-allowed; }
+    .status-box {
+      background: #0a0a0a;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      min-height: 60px;
+      display: none;
+    }
+    .status-box.visible { display: block; }
+    .status-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .status-pending { color: #f5a623; }
+    .status-paid { color: #7ed321; }
+    .status-done { color: #f0f0f0; line-height: 1.6; }
+    .status-error { color: #e74c3c; }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .metric {
+      background: #0a0a0a;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f0f0f0;
+    }
+    .metric-label {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .payment-url-box {
+      background: #0d1a0d;
+      border: 1px solid #2a5c2a;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+      display: none;
+    }
+    .payment-url-box.visible { display: block; }
+    .payment-url-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #5a9e5a;
+      margin-bottom: 10px;
+    }
+    .payment-url-value {
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: #7ed321;
+      word-break: break-all;
+      line-height: 1.5;
+      background: #070f07;
+      border: 1px solid #1e3d1e;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+    .copy-btn {
+      width: auto;
+      margin-top: 0;
+      padding: 7px 16px;
+      background: #1e3d1e;
+      color: #7ed321;
+      border: 1px solid #2a5c2a;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: #2a5c2a; }
+    .copy-btn:disabled { background: #111; color: #444; cursor: default; }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #444;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="tag">Interledger Open Payments Demo</div>
+    <h1>Proof of Inevitability</h1>
+    <p>Software cannot execute until it pays. No subscription. No billing. Payment is the permission.</p>
+  </div>
+
+  <div class="card">
+    <h2>Run a Paid Execution</h2>
+    <textarea id="prompt" placeholder="Enter any prompt — this task cannot run without real-time payment via Open Payments..."></textarea>
+    <button id="runBtn" onclick="run()">Pay & Execute →</button>
+    <div class="status-box" id="statusBox">
+      <div class="status-label">Status</div>
+      <div id="statusText"></div>
+    </div>
+    <div class="payment-url-box" id="paymentUrlBox">
+      <div class="payment-url-label">Incoming Payment URL — send payment to this address</div>
+      <div class="payment-url-value" id="paymentUrlValue"></div>
+      <button class="copy-btn" id="copyBtn" onclick="copyPaymentUrl()">Copy URL</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Live Metrics</h2>
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-value" id="totalPayments">0</div>
+        <div class="metric-label">Payments Confirmed</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" id="totalExecutions">0</div>
+        <div class="metric-label">Executions Gated</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" id="avgLatency">—</div>
+        <div class="metric-label">Avg Latency (ms)</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" id="totalRequests">0</div>
+        <div class="metric-label">Total Requests</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Built by Rashon A. Massey + Claude (Anthropic) &nbsp;·&nbsp; Interledger Protocol research project · 2026
+  </div>
+
+  <script>
+    let currentRequestId = null;
+    let pollInterval = null;
+
+    async function run() {
+      const prompt = document.getElementById('prompt').value.trim();
+      if (!prompt) return alert('Enter a prompt first');
+
+      const btn = document.getElementById('runBtn');
+      btn.disabled = true;
+      btn.textContent = 'Requesting payment...';
+
+      hidePaymentUrl();
+      showStatus('pending', 'Creating payment request via Open Payments...');
+
+      try {
+        const res = await fetch('/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt })
+        });
+        const data = await res.json();
+        currentRequestId = data.requestId;
+
+        showStatus('pending', `💳 Payment required: ${data.amount}\n\nWaiting for payment confirmation...`);
+        showPaymentUrl(data.incomingPaymentUrl);
+        btn.textContent = 'Waiting for payment...';
+
+        // Start polling for result
+        pollInterval = setInterval(checkStatus, 2000);
+
+      } catch (err) {
+        showStatus('error', 'Error: ' + err.message);
+        resetBtn();
+      }
+    }
+
+    async function checkStatus() {
+      if (!currentRequestId) return;
+      try {
+        const res = await fetch('/status/' + currentRequestId);
+        const data = await res.json();
+
+        if (data.status === 'paid_executing') {
+          showStatus('paid', '✅ Payment confirmed! Executing task...');
+          hidePaymentUrl();
+          document.getElementById('runBtn').textContent = 'Executing...';
+        }
+
+        if (data.status === 'done') {
+          clearInterval(pollInterval);
+          showStatus('done', data.output);
+          resetBtn();
+          loadMetrics();
+        }
+
+        if (data.status === 'error') {
+          clearInterval(pollInterval);
+          showStatus('error', 'Error: ' + data.message);
+          hidePaymentUrl();
+          resetBtn();
+        }
+      } catch (err) {
+        console.error('Poll error:', err);
+      }
+    }
+
+    function showStatus(type, text) {
+      const box = document.getElementById('statusBox');
+      const statusText = document.getElementById('statusText');
+      box.classList.add('visible');
+      statusText.className = 'status-' + type;
+      statusText.style.whiteSpace = 'pre-wrap';
+      statusText.textContent = text;
+    }
+
+    function showPaymentUrl(url) {
+      if (!url) return;
+      const box = document.getElementById('paymentUrlBox');
+      document.getElementById('paymentUrlValue').textContent = url;
+      document.getElementById('copyBtn').textContent = 'Copy URL';
+      document.getElementById('copyBtn').disabled = false;
+      box.classList.add('visible');
+    }
+
+    function hidePaymentUrl() {
+      document.getElementById('paymentUrlBox').classList.remove('visible');
+    }
+
+    function copyPaymentUrl() {
+      const url = document.getElementById('paymentUrlValue').textContent;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied!';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = 'Copy URL';
+          btn.disabled = false;
+        }, 2000);
+      });
+    }
+
+    function resetBtn() {
+      const btn = document.getElementById('runBtn');
+      btn.disabled = false;
+      btn.textContent = 'Pay & Execute →';
+    }
+
+    async function loadMetrics() {
+      try {
+        const res = await fetch('/metrics');
+        const data = await res.json();
+        document.getElementById('totalPayments').textContent = data.totalPaymentsConfirmed;
+        document.getElementById('totalExecutions').textContent = data.totalExecutions;
+        document.getElementById('avgLatency').textContent = data.averageLatencyMs || '—';
+        document.getElementById('totalRequests').textContent = data.totalRequests;
+      } catch (err) {
+        console.error('Metrics error:', err);
+      }
+    }
+
+    // Load metrics on start and every 10 seconds
+    loadMetrics();
+    setInterval(loadMetrics, 10000);
+  </script>
+
+</body>
+</html>
