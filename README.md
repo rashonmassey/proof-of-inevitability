@@ -127,7 +127,9 @@ Node.js 18 or higher. ES modules (`type: "module"`).
 
 This repository is Phase 1 of a five-phase research project running 2026–2027. The full body of work tightens from this single-step proof to multi-step agent flows (Phase 2), demonstrable price/latency routing across competing services (Phase 3), live creator micro-settlement using my own brand [MICOPEIA](https://micopeia.com) as the named pilot (Phase 4), and an open-source documentation package (Phase 5).
 
-A separate commercial application called **AgentPay** is being developed in parallel on the same Open Payments primitives. The architectural primitives explored in this research repository remain open-source for the ecosystem's benefit; the commercial product is a separate effort.
+A separate commercial application called **Aiyo** is being developed in parallel on the same Open Payments primitives. The architectural primitives explored in this research repository remain open-source for the ecosystem's benefit; the commercial product is a separate effort.
+
+*Note on the brand: the commercial product evolved through working titles (AgentPay, Spool) before locking on **Aiyo** in April 2026. The repository reflects the current brand. The research thesis and architecture are unchanged.*
 
 ---
 

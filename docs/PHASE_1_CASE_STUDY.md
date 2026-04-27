@@ -190,7 +190,7 @@ The core claim is proven.
 Phase 1 proved the substrate. Phases 2 through 5 extend it along three axes:
 
 - **Volume:** 100+ transactions in Phase 2, moving from single-call proof to multi-step agent flows.
-- **Choice:** Phase 3 introduces two or more AgentPay-enabled merchants and demonstrates agent-side routing based on price/speed.
+- **Choice:** Phase 3 introduces two or more Open Payments-enabled merchants and demonstrates agent-side routing based on price/speed.
 - **Access:** Phase 4 extends the system to a real creator (MICOPEIA) receiving live micro-settlements — closing the loop between machine economy and human financial access.
 
 See [`ROADMAP.md`](./ROADMAP.md) for the full phase plan with success thresholds.

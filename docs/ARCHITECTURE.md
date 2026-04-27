@@ -140,7 +140,7 @@ This project bets on the rail.
 
 ## What this architecture is deliberately not
 
-- **Not a production payments platform.** This is a research demonstration. The scope is proving the gate works. Productionization (real merchant flows, refund logic, fraud detection, regulatory scaffolding) happens in a separate commercial product, AgentPay, not in this research repository.
+- **Not a production payments platform.** This is a research demonstration. The scope is proving the gate works. Productionization (real merchant flows, refund logic, fraud detection, regulatory scaffolding) happens in a separate commercial product, Aiyo, not in this research repository.
 - **Not a wallet.** Users bring their own test wallet. The server holds only the receive-side wallet.
 - **Not a payment router.** The server does not concern itself with how the payment finds its way across Interledger. That's the protocol's job.
 - **Not yet persistent.** Request state lives in memory. Crash recovery, distributed state, and database-backed logs are Phase 2+ work when multi-step flows make persistence necessary.

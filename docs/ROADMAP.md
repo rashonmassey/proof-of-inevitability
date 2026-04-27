@@ -74,7 +74,7 @@ This document covers Phases 2 through 5 at a high level. Specific success thresh
 
 ## Commercial application
 
-A separate commercial application called **AgentPay** is being developed in parallel on the same Open Payments primitives. AgentPay is a closed-source product; its progress is reported here only in summary form when it becomes relevant to the research output. The architectural primitives explored in this repository — the payment gate, the GNAP flow, the metrics pattern — remain open under MIT and CC-BY-4.0 for the ecosystem's benefit.
+A separate commercial application called **Aiyo** is being developed in parallel on the same Open Payments primitives. Aiyo is a closed-source product; its progress is reported here only in summary form when it becomes relevant to the research output. The architectural primitives explored in this repository — the payment gate, the GNAP flow, the metrics pattern — remain open under MIT and CC-BY-4.0 for the ecosystem's benefit.
 
 ---
 
