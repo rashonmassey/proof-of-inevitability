@@ -106,7 +106,8 @@ proof-of-inevitability/
 │   └── sleep.js               — Utility
 └── docs/
     ├── ARCHITECTURE.md        — Technical deep-dive
-    ├── PHASE_1_CASE_STUDY.md  — How this got built (collaboration model + bug stories)
+    ├── PHASE_1_CASE_STUDY.md  — How Phase 1 got built (collaboration model + bug stories)
+    ├── PHASE_2_CASE_STUDY.md  — Phase 2 complete: two-layer measurement + multi-step agent chain
     └── ROADMAP.md             — Phases 2–5 with thresholds
 ```
 
@@ -156,10 +157,26 @@ Issues and pull requests are welcome — especially corrections to anything inac
 
 ---
 
-## License
+## Case studies
 
-Code is released under the [MIT License](./LICENSE). Documentation in `/docs` is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Each phase produces a public case study documenting the work, the methodology, and the honest findings. New case studies are appended here as they complete.
+
+| Phase | Status | Document |
+|-------|--------|----------|
+| Phase 1 — pay-per-execution gate (single step) | ✅ Complete (Apr 2026) | [PHASE_1_CASE_STUDY.md](./docs/PHASE_1_CASE_STUDY.md) |
+| Phase 2 — two-layer measurement + multi-step agent chain | ✅ Complete (May 2026) | [PHASE_2_CASE_STUDY.md](./docs/PHASE_2_CASE_STUDY.md) |
+| Phase 3 — competing services + dynamic routing | 🛠 Infrastructure-ready, gated on second hosted Open Payments wallet | *coming* |
+| Phase 4 — creator micro-settlement (MICOPEIA live) | ⏳ Built end-to-end; gated on hosted production wallet availability | *coming* |
+| Phase 5 — open-source documentation package | ⏳ Continuous | *in progress* |
+
+The case studies are append-only research records, not marketing material. Each documents what was tried, what worked, what didn't, and what was decided by whom.
 
 ---
 
-*Phase 1 shipped: April 2026. Phase 2 begins: May 2026. Updates posted monthly at [micopeia.substack.com](https://micopeia.substack.com).*
+## License
+
+Code is released under the [MIT License](./LICENSE). Documentation in `/docs` is released under [CC BY 4.0](./LICENSE-CC-BY-4.0) ([summary](https://creativecommons.org/licenses/by/4.0/)).
+
+---
+
+*Phase 1 shipped: April 2026. Phase 2 shipped: May 2026. Updates posted at [micopeia.substack.com](https://micopeia.substack.com).*
